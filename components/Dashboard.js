@@ -14,6 +14,7 @@ import ProfileOverlay from './Profile';
 import DaRoutes from './DaRoutes';
 import RoadTracker from './RoadTracker'; 
 import OptimizedHome from './Perfomance'; 
+import RouteScanner from './routers';
 
 const { width } = Dimensions.get('window');
 
@@ -36,20 +37,8 @@ export default function DashboardScreen() {
   const renderContent = () => {
     if (activeTab === 'HOME') return <HomeComponent onClose={() => setActiveTab('DASHBOARD')} />;
     if (activeTab === 'ROUTES') return <DaRoutes onClose={() => setActiveTab('DASHBOARD')} />;
-if (activeTab === 'SCANNER') {
-  return (
-    <View style={{
-      flex: 1,
-      justifyContent: 'center',
-      alignItems: 'center',
-      backgroundColor: '#000'
-    }}>
-      <Text style={{ color: '#E2FF00', fontSize: 18 }}>
-        Scanner unavailable on web
-      </Text>
-    </View>
-  );
-}
+if (activeTab === 'SCANNER')
+  return <RouteScanner onClose={() => setActiveTab('DASHBOARD')} />;
     if (activeTab === 'PERFORMANCE') return <OptimizedHome onClose={() => setActiveTab('DASHBOARD')} />;
     if (activeTab === 'DIAGNOSTICS') return <RoadTracker onClose={() => setActiveTab('DASHBOARD')} />;
 
